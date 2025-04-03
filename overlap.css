@@ -1,0 +1,131 @@
+.overlap-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0; /* no gap – we'll use margin for overlap */
+    max-width: auto;
+    margin: 60px auto;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  
+  /* LEFT BOX */
+  .left-box {
+    width: 500px;
+    padding: 20px 20px 20px 30px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    border-radius: 12px;
+    color: white;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    position: relative;
+    z-index: 2;
+    margin-right: -40px; /* 👈 This overlaps the slideshow */
+  }
+  
+  /* Blue vertical bar */
+  .accent-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 6px;
+    background-color: #0059b3;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+  }
+  
+  .left-box-content {
+    position: relative;
+    z-index: 1;
+  }
+  .left-box-content h3 {
+    margin: 0 0 10px;
+    font-size: 1.4rem;
+    color: #0059b3;
+    font-family: Calibri;
+  }
+  .left-box-content p {
+    margin: 0;
+    font-size: 1rem;
+    color: #6d6c6c;
+    font-family: Calibri;
+  }
+  
+  /* RIGHT BOX (Slideshow) */
+  .slideshow-box {
+    width: 700px;
+    height: 350px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+    position: relative;
+    z-index: 1;
+  }
+  
+  .slide {
+    display: none;
+    width: 100%;
+    height: 100%;
+  }
+  .slide.active {
+    display: block;
+  }
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .slide-dots {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 2;
+  }
+  
+  .slide-dots span {
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .slide-dots span.active {
+    background: white;
+    box-shadow: 0 0 4px white;
+  }
+  
+  /* ✅ RESPONSIVE */
+  @media (max-width: 768px) {
+    .overlap-section {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .left-box {
+      margin-right: 0;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+  
+    .slideshow-box {
+      width: 100%;
+      height: 250px;
+    }
+  
+    .slide-dots {
+      flex-direction: row;
+      justify-content: center;
+      bottom: 10px;
+      right: auto;
+      left: 0;
+      width: 100%;
+    }
+  }
